@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Blog de F1</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+
 <body>
     <header>
         <h1>Blog de F1 🏎️</h1>
@@ -14,11 +16,34 @@
             <a href="/postagens">Postagens</a>
         </nav>
     </header>
-    <main>
-        {{{body}}}
+    <main class="main-content">
+        <div class="content">
+            {{{body}}}
+        </div>
+        <aside class="sidebar">
+            <h3>🏁 Ranking de Pilotos</h3>
+            <ol>
+                <li>Max Verstappen - 345 pts</li>
+                <li>Lewis Hamilton - 310 pts</li>
+                <li>Charles Leclerc - 295 pts</li>
+                <li>Sergio Pérez - 280 pts</li>
+            </ol>
+
+            <h3>🏎️ Equipes</h3>
+            <ol>
+                <li>Red Bull Racing - 625 pts</li>
+                <li>Mercedes AMG - 590 pts</li>
+                <li>Ferrari - 540 pts</li>
+                <li>McLaren - 420 pts</li>
+            </ol>
+        </aside>
     </main>
+
     <footer>
         <p>&copy; 2025 Blog de F1</p>
     </footer>
+    
+    <script src="/assets/js/main.js"></script>
 </body>
+
 </html>

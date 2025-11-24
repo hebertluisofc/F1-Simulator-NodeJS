@@ -24,7 +24,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/postagens', (req, res) => {
-    res.send('Lista de postagens (em breve com dados do banco)');
+    res.render('postagens');
 });
 
 app.get('/nova', (req, res) => {
