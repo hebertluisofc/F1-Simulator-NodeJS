@@ -39,10 +39,11 @@ sequelize.sync()
 // Página inicial - últimas 3 postagens
 app.get('/', async (req, res) => {
     try {
-        const posts = await Post.findAll({ 
+        const postsData = await Post.findAll({ 
             limit: 3, 
             order: [['createdAt', 'DESC']] 
         });
+        const posts = postsData.map(post => post.toJSON());
         res.render('index', { posts });
     } catch (error) {
         console.error(error);
@@ -53,13 +54,18 @@ app.get('/', async (req, res) => {
 // Listar todas postagens
 app.get('/postagens', async (req, res) => {
     try {
-        const posts = await Post.findAll({ order: [['createdAt', 'DESC']] });
+        const postsData = await Post.findAll({ order: [['createdAt', 'DESC']] });
+
+        // Converter para JSON simples (necessário para Handlebars)
+        const posts = postsData.map(post => post.toJSON());
+
         res.render('postagens', { posts });
     } catch (error) {
         console.error(error);
         res.status(500).send('Erro ao listar postagens');
     }
 });
+
 
 // Exibir formulário de nova postagem
 app.get('/nova', (req, res) => {
@@ -76,6 +82,51 @@ app.post('/add', async (req, res) => {
     } catch (error) {
         console.error(error);
         res.status(500).send('Erro ao salvar a postagem');
+    }
+});
+
+// Exibir formulário para editar postagem (UPDATE)
+app.get('/editar/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const postData = await Post.findByPk(id);
+        if (!postData) return res.status(404).send('Postagem não encontrada');
+
+        const post = postData.toJSON();
+        res.render('form', { post }); // Reaproveitamos o form.handlebars
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao carregar postagem');
+    }
+});
+
+// Receber dados atualizados do formulário (UPDATE)
+app.post('/editar/:id', async (req, res) => {
+    const { id } = req.params;
+    const { titulo, conteudo, autor } = req.body;
+
+    try {
+        await Post.update(
+            { titulo, conteudo, autor },
+            { where: { id } }
+        );
+        res.redirect('/postagens');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao atualizar postagem');
+    }
+});
+
+// Deletar postagem (DELETE)
+app.get('/deletar/:id', async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await Post.destroy({ where: { id } });
+        res.redirect('/postagens');
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Erro ao deletar postagem');
     }
 });
 

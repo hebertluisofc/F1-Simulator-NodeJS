@@ -1,13 +1,19 @@
 <h2>Resultados Recentes de F1 🏎️</h2>
 
 <div class="cards-container">
-    {{#each posts}}
-        <div class="card">
-            <h3>{{titulo}}</h3>
-            <p><strong>Autor:</strong> {{autor}}</p>
-            <p>{{conteudo}}</p>
-        </div>
+    {{#if posts.length}}
+        {{#each posts}}
+            <div class="card">
+                <h3>{{titulo}}</h3>
+                <p><strong>Autor:</strong> {{autor}}</p>
+                <p>{{conteudo}}</p>
+                <div class="card-actions">
+                    <a href="/editar/{{id}}">✏️ Editar</a>
+                    <a href="/deletar/{{id}}" onclick="return confirm('Deseja realmente deletar?')">🗑️ Deletar</a>
+                </div>
+            </div>
+        {{/each}}
     {{else}}
         <p>Nenhuma postagem encontrada.</p>
-    {{/each}}
+    {{/if}}
 </div>

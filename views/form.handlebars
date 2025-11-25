@@ -1,16 +1,18 @@
-<h2>Criar Nova Postagem de F1 🏎️</h2>
+<h2>{{#if post}}Editar Postagem{{else}}Criar Nova Postagem{{/if}} 🏎️</h2>
 
 <div class="form-card">
-    <form action="/add" method="POST">
+    <form action="{{#if post}}/editar/{{post.id}}{{else}}/add{{/if}}" method="POST">
         <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" placeholder="Ex: GP de Mônaco - Resultados" required>
+        <input type="text" id="titulo" name="titulo" placeholder="Ex: GP de Mônaco - Resultados" required
+               value="{{#if post}}{{post.titulo}}{{/if}}">
 
         <label for="conteudo">Conteúdo:</label>
-        <textarea id="conteudo" name="conteudo" rows="6" placeholder="Escreva aqui a notícia ou análise..." required></textarea>
+        <textarea id="conteudo" name="conteudo" rows="6" placeholder="Escreva aqui a notícia ou análise..." required>{{#if post}}{{post.conteudo}}{{/if}}</textarea>
 
         <label for="autor">Autor:</label>
-        <input type="text" id="autor" name="autor" placeholder="Ex: Lewis Hamilton" required>
+        <input type="text" id="autor" name="autor" placeholder="Ex: Lewis Hamilton" required
+               value="{{#if post}}{{post.autor}}{{/if}}">
 
-        <button type="submit">Salvar Postagem</button>
+        <button type="submit">{{#if post}}Atualizar Postagem{{else}}Salvar Postagem{{/if}}</button>
     </form>
 </div>

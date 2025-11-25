@@ -186,6 +186,23 @@ footer {
     transform: scale(1.03);
 }
 
+.card-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+}
+
+.card-actions a {
+    text-decoration: none;
+    color: #ffeb3b;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.card-actions a:hover {
+    color: #d32f2f;
+}
+
 @media (max-width:900px) {
     .main-content {
         flex-direction: column;
