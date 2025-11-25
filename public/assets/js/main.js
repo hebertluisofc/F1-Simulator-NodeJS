@@ -1,12 +1,7 @@
-// ==============================
-// Animação de cards e sidebar
-// ==============================
-
 document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(".card");
     const sidebar = document.querySelector(".sidebar");
 
-    // Efeito de fade-in para cada card
     cards.forEach((card, index) => {
         card.style.opacity = 0;
         card.style.transform = "translateY(20px)";
@@ -14,10 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.transition = "all 0.6s ease-out";
             card.style.opacity = 1;
             card.style.transform = "translateY(0)";
-        }, index * 150); // efeito cascata
+        }, index * 150);
     });
 
-    // Efeito de slide-in para sidebar
     if (sidebar) {
         sidebar.style.opacity = 0;
         sidebar.style.transform = "translateX(20px)";

@@ -1,25 +1,13 @@
 <h2>Últimas Postagens de F1 🏎️</h2>
 
 <div class="cards-container">
-    {{!-- Exemplo estático de postagens, futuramente será gerado dinamicamente --}}
-    <div class="card">
-        <h3>Título da Postagem 1</h3>
-        <p>Autor: Lewis Hamilton</p>
-        <p>Resumo: Confira os resultados do GP de Mônaco e as melhores ultrapassagens...</p>
-        <a href="#">Ler mais</a>
-    </div>
-
-    <div class="card">
-        <h3>Título da Postagem 2</h3>
-        <p>Autor: Max Verstappen</p>
-        <p>Resumo: Estratégias de pit stop que mudaram o rumo da corrida...</p>
-        <a href="#">Ler mais</a>
-    </div>
-
-    <div class="card">
-        <h3>Título da Postagem 3</h3>
-        <p>Autor: Charles Leclerc</p>
-        <p>Resumo: Análise técnica do carro da Ferrari para o próximo GP...</p>
-        <a href="#">Ler mais</a>
-    </div>
+    {{#each posts}}
+        <div class="card">
+            <h3>{{titulo}}</h3>
+            <p><strong>Autor:</strong> {{autor}}</p>
+            <p>{{conteudo}}</p>
+        </div>
+    {{else}}
+        <p>Não há postagens recentes.</p>
+    {{/each}}
 </div>

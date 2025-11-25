@@ -1,28 +1,13 @@
 <h2>Resultados Recentes de F1 🏎️</h2>
 
 <div class="cards-container">
-    {{!-- Exemplos estáticos; futuramente será gerado dinamicamente --}}
-    <div class="card">
-        <h3>GP de Mônaco 2025</h3>
-        <p><strong>Vencedor:</strong> Max Verstappen</p>
-        <p><strong>Pole:</strong> Charles Leclerc</p>
-        <p><strong>Volta Rápida:</strong> Lewis Hamilton</p>
-        <a href="#">Ver detalhes</a>
-    </div>
-
-    <div class="card">
-        <h3>GP do Canadá 2025</h3>
-        <p><strong>Vencedor:</strong> Lewis Hamilton</p>
-        <p><strong>Pole:</strong> Lando Norris</p>
-        <p><strong>Volta Rápida:</strong> Max Verstappen</p>
-        <a href="#">Ver detalhes</a>
-    </div>
-
-    <div class="card">
-        <h3>GP da Itália 2025</h3>
-        <p><strong>Vencedor:</strong> Charles Leclerc</p>
-        <p><strong>Pole:</strong> Sergio Pérez</p>
-        <p><strong>Volta Rápida:</strong> George Russell</p>
-        <a href="#">Ver detalhes</a>
-    </div>
+    {{#each posts}}
+        <div class="card">
+            <h3>{{titulo}}</h3>
+            <p><strong>Autor:</strong> {{autor}}</p>
+            <p>{{conteudo}}</p>
+        </div>
+    {{else}}
+        <p>Nenhuma postagem encontrada.</p>
+    {{/each}}
 </div>
