@@ -15,20 +15,23 @@ async function fetchPilotos() {
     const pilotos = [];
 
     $('table tbody tr').each((i, el) => {
-        if (i >= 20) return; // 🔥 LIMITE DE 20 PILOTOS
+        if (pilotos.length >= 20) return;
 
         const tds = $(el).find('td');
+
         const posicao = $(tds[0]).text().trim();
-        const nomeFull = $(tds[1]).text().trim();
-        const nome = nomeFull;
+        let numero = "";
+        let nome = "";
+
+        const nomeFull = $(tds[1]).text().trim().split(" ");
+        numero = nomeFull.shift();        // primeiro item é o número do carro
+        nome = nomeFull.join(" ");        // o restante é o nome do piloto
+
         const equipe = $(tds[2]).text().trim();
         const pontos = $(tds[tds.length - 1]).text().trim();
 
         pilotos.push({
-            posicao: parseInt(posicao),
-            nome,
-            equipe,
-            pontos: parseInt(pontos)
+            nomeFormatado: `${posicao} ${nome} - ${pontos} pts`,
         });
     });
 
@@ -42,7 +45,7 @@ async function fetchConstrutores() {
     const construtores = [];
 
     $('table tbody tr').each((i, el) => {
-        if (i >= 10) return; // 🔥 LIMITE DE 10 EQUIPES
+        if (construtores.length >= 10) return;
 
         const tds = $(el).find('td');
         const posicao = $(tds[0]).text().trim();
@@ -50,9 +53,7 @@ async function fetchConstrutores() {
         const pontos = $(tds[tds.length - 1]).text().trim();
 
         construtores.push({
-            posicao: parseInt(posicao),
-            nome,
-            pontos: parseInt(pontos)
+            nomeFormatado: `${posicao}. ${nome} - ${pontos} pts`,
         });
     });
 

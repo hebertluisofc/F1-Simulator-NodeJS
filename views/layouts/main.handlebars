@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Blog de F1</title>
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/sidebar.css">
 </head>
 
 <body>
@@ -21,37 +22,22 @@
         <div class="content">
             {{{body}}}
         </div>
-        <aside class="sidebar" id="sidebar-standings">
-            <h3>🏁 Ranking de Pilotos</h3>
-            <ol id="pilotos-list"></ol>
 
-            <h3>🏎️ Equipes</h3>
-            <ol id="construtores-list"></ol>
+        <aside class="sidebar">
+            <h2>Classificação 2025</h2>
+
+            <div class="section">
+                <h3>Pilotos</h3>
+                <ul id="listaPilotos"></ul>
+            </div>
+
+            <div class="section">
+                <h3>Equipes</h3>
+                <ul id="listaEquipes"></ul>
+            </div>
         </aside>
 
-        <script>
-            async function loadStandings() {
-                const resP = await fetch('/api/standings/pilotos');
-                const { pilotos } = await resP.json();
-                const listaP = document.getElementById('pilotos-list');
-                pilotos.forEach(p => {
-                    const li = document.createElement('li');
-                    li.innerText = `${p.posicao}. ${p.nome} — ${p.equipe} — ${p.pontos} pts`;
-                    listaP.appendChild(li);
-                });
-
-                const resC = await fetch('/api/standings/construtores');
-                const { construtores } = await resC.json();
-                const listaC = document.getElementById('construtores-list');
-                construtores.forEach(c => {
-                    const li = document.createElement('li');
-                    li.innerText = `${c.posicao}. ${c.nome} — ${c.pontos} pts`;
-                    listaC.appendChild(li);
-                });
-            }
-
-            document.addEventListener('DOMContentLoaded', loadStandings);
-        </script>
+        <script src="/assets/js/sidebar.js"></script>
 
     </main>
 
