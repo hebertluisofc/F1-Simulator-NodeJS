@@ -19,19 +19,12 @@ async function fetchPilotos() {
 
         const tds = $(el).find('td');
 
-        const posicao = $(tds[0]).text().trim();
-        let numero = "";
-        let nome = "";
+        const posName = $(tds[0]).text().trim();
 
-        const nomeFull = $(tds[1]).text().trim().split(" ");
-        numero = nomeFull.shift();        // primeiro item é o número do carro
-        nome = nomeFull.join(" ");        // o restante é o nome do piloto
-
-        const equipe = $(tds[2]).text().trim();
         const pontos = $(tds[tds.length - 1]).text().trim();
 
         pilotos.push({
-            nomeFormatado: `${posicao} ${nome} - ${pontos} pts`,
+            nomeFormatado: `${posName} - ${pontos} pts`,
         });
     });
 
@@ -48,12 +41,13 @@ async function fetchConstrutores() {
         if (construtores.length >= 10) return;
 
         const tds = $(el).find('td');
-        const posicao = $(tds[0]).text().trim();
-        const nome = $(tds[1]).text().trim();
+
+        const posName = $(tds[0]).text().trim();
+
         const pontos = $(tds[tds.length - 1]).text().trim();
 
         construtores.push({
-            nomeFormatado: `${posicao}. ${nome} - ${pontos} pts`,
+            nomeFormatado: `${posName} - ${pontos} pts`,
         });
     });
 
