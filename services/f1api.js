@@ -14,17 +14,22 @@ async function fetchPilotos() {
 
     const pilotos = [];
 
-    // A estrutura exata do HTML pode mudar — adapte os seletores conforme a página
     $('table tbody tr').each((i, el) => {
+        if (i >= 20) return; // 🔥 LIMITE DE 20 PILOTOS
+
         const tds = $(el).find('td');
         const posicao = $(tds[0]).text().trim();
-        // Exemplo: o nome vem com sigla + nome — pode precisar limpeza
         const nomeFull = $(tds[1]).text().trim();
-        const nome = nomeFull; // ou extrair apenas o nome “limpo”
+        const nome = nomeFull;
         const equipe = $(tds[2]).text().trim();
         const pontos = $(tds[tds.length - 1]).text().trim();
 
-        pilotos.push({ posicao: parseInt(posicao), nome, equipe, pontos: parseInt(pontos) });
+        pilotos.push({
+            posicao: parseInt(posicao),
+            nome,
+            equipe,
+            pontos: parseInt(pontos)
+        });
     });
 
     return pilotos;
@@ -37,12 +42,18 @@ async function fetchConstrutores() {
     const construtores = [];
 
     $('table tbody tr').each((i, el) => {
+        if (i >= 10) return; // 🔥 LIMITE DE 10 EQUIPES
+
         const tds = $(el).find('td');
         const posicao = $(tds[0]).text().trim();
         const nome = $(tds[1]).text().trim();
         const pontos = $(tds[tds.length - 1]).text().trim();
 
-        construtores.push({ posicao: parseInt(posicao), nome, pontos: parseInt(pontos) });
+        construtores.push({
+            posicao: parseInt(posicao),
+            nome,
+            pontos: parseInt(pontos)
+        });
     });
 
     return construtores;
