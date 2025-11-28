@@ -12,6 +12,10 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 8081;
 
+const f1api = require('./services/f1api');
+app.use(f1api);
+
+
 // ==============================
 // Configurações do Express
 // ==============================

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <title>Blog de F1</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
+
 <body>
     <header>
         <h1>Blog de F1 🏎️</h1>
@@ -19,23 +21,38 @@
         <div class="content">
             {{{body}}}
         </div>
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar-standings">
             <h3>🏁 Ranking de Pilotos</h3>
-            <ol>
-                <li>Max Verstappen - 345 pts</li>
-                <li>Lewis Hamilton - 310 pts</li>
-                <li>Charles Leclerc - 295 pts</li>
-                <li>Sergio Pérez - 280 pts</li>
-            </ol>
+            <ol id="pilotos-list"></ol>
 
             <h3>🏎️ Equipes</h3>
-            <ol>
-                <li>Red Bull Racing - 625 pts</li>
-                <li>Mercedes AMG - 590 pts</li>
-                <li>Ferrari - 540 pts</li>
-                <li>McLaren - 420 pts</li>
-            </ol>
+            <ol id="construtores-list"></ol>
         </aside>
+
+        <script>
+            async function loadStandings() {
+                const resP = await fetch('/api/standings/pilotos');
+                const { pilotos } = await resP.json();
+                const listaP = document.getElementById('pilotos-list');
+                pilotos.forEach(p => {
+                    const li = document.createElement('li');
+                    li.innerText = `${p.posicao}. ${p.nome} — ${p.equipe} — ${p.pontos} pts`;
+                    listaP.appendChild(li);
+                });
+
+                const resC = await fetch('/api/standings/construtores');
+                const { construtores } = await resC.json();
+                const listaC = document.getElementById('construtores-list');
+                construtores.forEach(c => {
+                    const li = document.createElement('li');
+                    li.innerText = `${c.posicao}. ${c.nome} — ${c.pontos} pts`;
+                    listaC.appendChild(li);
+                });
+            }
+
+            document.addEventListener('DOMContentLoaded', loadStandings);
+        </script>
+
     </main>
 
     <footer>
@@ -44,4 +61,5 @@
 
     <script src="/assets/js/main.js"></script>
 </body>
+
 </html>
