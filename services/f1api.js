@@ -34,7 +34,7 @@ async function fetchPilotos() {
         const pontos = $(tds[tds.length - 1]).text().trim();
 
         pilotos.push({
-            nomeFormatado: `${pos} - ${nomePiloto} - ${pontos} pts`
+            nomeFormatado: `#${pos} - ${nomePiloto} - ${pontos} pts`
         });
     });
 
@@ -59,6 +59,7 @@ async function fetchConstrutores() {
         pos = pos ? pos[0].padStart(2, "0") : "00";
 
         let nomeEquipe = raw.replace(/^\d+\s*/, "").trim();
+        nomeEquipe = nomeEquipe.slice(0, nomeEquipe.length / 2);
 
         const pontos = $(tds[tds.length - 1]).text().trim();
 
@@ -66,7 +67,7 @@ async function fetchConstrutores() {
             posicao: pos,
             equipe: nomeEquipe,
             pontos,
-            nomeFormatado: `${pos} - ${nomeEquipe} - ${pontos} pts`
+            nomeFormatado: `#${pos} - ${nomeEquipe} - ${pontos} pts`
         });
     });
 
