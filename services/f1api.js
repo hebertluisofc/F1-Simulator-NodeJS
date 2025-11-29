@@ -19,17 +19,28 @@ async function fetchPilotos() {
 
         const tds = $(el).find('td');
 
-        const posName = $(tds[0]).text().trim();
+        let raw = $(tds[0]).text().trim();
+
+        let pos = raw.match(/^\d+/);
+        pos = pos ? pos[0].padStart(2, "0") : "00";
+
+        let nomePiloto = raw.replace(/^\d+\s*/, "");
+        nomePiloto = nomePiloto.replace(/\s+[A-Z]{2,}\s*$/, "").trim();
+
+        if (nomePiloto.length > 3) {
+            nomePiloto = nomePiloto.slice(0, 3) + " " + nomePiloto.slice(3);
+        }
 
         const pontos = $(tds[tds.length - 1]).text().trim();
 
         pilotos.push({
-            nomeFormatado: `${posName} - ${pontos} pts`,
+            nomeFormatado: `${pos} - ${nomePiloto} - ${pontos} pts`
         });
     });
 
     return pilotos;
 }
+
 
 async function fetchConstrutores() {
     const { data } = await axios.get(URL_CONSTRUTORES);
@@ -42,12 +53,20 @@ async function fetchConstrutores() {
 
         const tds = $(el).find('td');
 
-        const posName = $(tds[0]).text().trim();
+        let raw = $(tds[0]).text().trim();
+
+        let pos = raw.match(/^\d+/);
+        pos = pos ? pos[0].padStart(2, "0") : "00";
+
+        let nomeEquipe = raw.replace(/^\d+\s*/, "").trim();
 
         const pontos = $(tds[tds.length - 1]).text().trim();
 
         construtores.push({
-            nomeFormatado: `${posName} - ${pontos} pts`,
+            posicao: pos,
+            equipe: nomeEquipe,
+            pontos,
+            nomeFormatado: `${pos} - ${nomeEquipe} - ${pontos} pts`
         });
     });
 
