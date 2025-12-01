@@ -22,3 +22,36 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 300);
     }
 });
+
+/* ============================================
+   TEMA CLARO/ESCURO - F1 STYLE
+============================================ */
+const themeToggle = document.getElementById("themeToggle");
+
+// Carregar tema salvo
+const savedTheme = localStorage.getItem("theme") || "light";
+document.documentElement.setAttribute("data-theme", savedTheme);
+
+// Atualizar estado visual do botão
+updateToggleIcon(savedTheme);
+
+// Clique para alternar temas
+themeToggle.addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const nextTheme = currentTheme === "light" ? "dark" : "light";
+
+    document.documentElement.setAttribute("data-theme", nextTheme);
+    localStorage.setItem("theme", nextTheme);
+
+    updateToggleIcon(nextTheme);
+});
+
+// Atualiza animação dos ícones
+function updateToggleIcon(theme) {
+    if (theme === "dark") {
+        themeToggle.classList.add("active");
+    } else {
+        themeToggle.classList.remove("active");
+    }
+}
+
