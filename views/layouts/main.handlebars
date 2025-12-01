@@ -7,71 +7,75 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <header class="site-header" role="banner">
-    <!-- BACKDROP STRIPES + LIGHTS -->
-    <div class="header-backdrop">
-        <div class="stripes">
-            <span class="stripe s1"></span>
-            <span class="stripe s2"></span>
-            <span class="stripe s3"></span>
-        </div>
-    </div>
-
-    <div class="header-inner">
-
-        <!-- COLUNA ESQUERDA: LOGO -->
-        <div class="brand">
-            <div class="logo-mark" aria-hidden="true">
-                <svg width="46" height="46" viewBox="0 0 100 100">
-                    <circle cx="50" cy="50" r="48" fill="none" stroke="#ffe100" stroke-width="6"/>
-                    <path d="M18 65 L42 35 L60 50 L82 22"
-                        fill="none" stroke="#0b2b5a" stroke-width="6"
-                        stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-            <div class="brand-text">
-                <h1>Blog de F1</h1>
-                <p class="tagline">Análises, resultados e telemetria — estilo F1</p>
+        <!-- BACKDROP STRIPES + LIGHTS -->
+        <div class="header-backdrop">
+            <div class="stripes">
+                <span class="stripe s1"></span>
+                <span class="stripe s2"></span>
+                <span class="stripe s3"></span>
             </div>
         </div>
 
-        <!-- COLUNA CENTRAL: NAV -->
-        <nav class="main-nav" role="navigation" aria-label="Principal">
-            <a href="/">Home</a>
-            <a href="/nova">Nova Postagem</a>
-            <a href="/postagens">Postagens</a>
-        </nav>
+        <div class="header-inner">
 
-        <!-- COLUNA DIREITA: AÇÕES -->
-        <div class="header-actions">
-            <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
-                <span class="sun">☀️</span>
-                <span class="moon">🌙</span>
-            </button>
+            <!-- COLUNA ESQUERDA: LOGO -->
+            <div class="brand">
+                <div class="logo-mark" aria-hidden="true">
+                    <svg width="46" height="46" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="#ffe100" stroke-width="6" />
+                        <path d="M18 65 L42 35 L60 50 L82 22" fill="none" stroke="#0b2b5a" stroke-width="6"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </div>
+                <div class="brand-text">
+                    <h1>Blog de F1</h1>
+                    <p class="tagline">Análises, resultados e telemetria — estilo F1</p>
+                </div>
+            </div>
 
-            <div class="start-lights" aria-hidden="true">
-                <div class="light red"></div>
-                <div class="light red"></div>
-                <div class="light amber"></div>
-                <div class="light green"></div>
+            <!-- COLUNA CENTRAL: NAV -->
+            <nav class="main-nav" role="navigation" aria-label="Principal">
+                <a href="/">Home</a>
+                <a href="/nova">Nova Postagem</a>
+                <a href="/postagens">Postagens</a>
+            </nav>
+
+            <!-- COLUNA DIREITA: AÇÕES -->
+            <div class="header-actions">
+                <div class="start-lights" aria-hidden="true">
+                    <div class="light red"></div>
+                    <div class="light red"></div>
+                    <div class="light amber"></div>
+                    <div class="light green"></div>
+                </div>
+
+                <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+                    <span class="sun">☀️</span>
+                    <span class="moon">🌙</span>
+                </button>
             </div>
         </div>
-    </div>
 
-    <!-- TELEMETRIA -->
-    <div class="telemetry" aria-hidden="true">
-        <div class="telemetry-track">
-            <div class="telemetry-item t1"><strong>Vel:</strong> 318 km/h</div>
-            <div class="telemetry-item t2"><strong>RPM:</strong> 15.2k</div>
-            <div class="telemetry-item t3"><strong>DRS:</strong> ON</div>
-            <div class="telemetry-item t4"><strong>TEMP:</strong> 92°C</div>
+        <!-- TELEMETRIA -->
+        <div class="telemetry" aria-hidden="true">
+            <div class="telemetry-track">
+                <div class="telemetry-item t1"><strong>Vel:</strong> 318 km/h</div>
+                <div class="telemetry-item t2"><strong>RPM:</strong> 15.2k</div>
+                <div class="telemetry-item t3"><strong>DRS:</strong> ON</div>
+                <div class="telemetry-item t4"><strong>TEMP:</strong> 92°C</div>
+                <div class="telemetry-item t5"><strong>FREIO:</strong> 78%</div>
+                <div class="telemetry-item t6"><strong>ERS:</strong> 3.2 MJ</div>
+                <div class="telemetry-item t7"><strong>Comb:</strong> 12.5 L</div>
+            </div>
         </div>
-    </div>
-</header>
+    </header>
 
 
     <main class="main-content" role="main">
@@ -84,7 +88,7 @@
         <aside class="sidebar" role="complementary" aria-label="Classificações e updates">
             <div class="sidebar-top">
                 <h2>Classificação Atual — 2025</h2>
-                <small class="source">Fonte: ESPN F1</small>
+                <a href="https://www.espn.com.br/f1/classificacao" class="source" target="_blank">Fonte: ESPN F1</a>
             </div>
 
             <div class="section">
