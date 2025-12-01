@@ -127,3 +127,51 @@ document.addEventListener('click', (e) => {
         setTimeout(()=> { btn.disabled = false; btn.textContent = 'Atualizar agora'; }, 900);
     });
 });
+
+
+// ============================
+// ANIMAÇÃO DO SEMÁFORO F1
+// ============================
+
+function iniciarSemaforoF1() {
+    const lights = document.querySelectorAll(".start-lights .light");
+    if (!lights.length) return;
+
+    // Reset
+    lights.forEach(l => {
+        l.classList.remove("on-red", "on-green");
+    });
+
+    let index = 0;
+
+    // Acende vermelhos um por um
+    const redInterval = setInterval(() => {
+        if (index < 4) {
+            lights[index].classList.add("on-red");
+            index++;
+        } else {
+            clearInterval(redInterval);
+
+            // Espera um pouco com todos vermelhos acesos
+            setTimeout(() => {
+                
+                // Apaga todos
+                lights.forEach(l => l.classList.remove("on-red"));
+
+                // Liga verde final!
+                setTimeout(() => {
+                    lights[3].classList.add("on-green"); // último vira verde
+                }, 300);
+
+            }, 600);
+        }
+    }, 600);
+}
+
+// Executa animação ao carregar a página
+window.addEventListener("load", () => {
+    iniciarSemaforoF1();
+
+    // Repetir a cada 15s (igual largada simulada)
+    setInterval(iniciarSemaforoF1, 15000);
+});
