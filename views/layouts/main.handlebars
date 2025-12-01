@@ -3,50 +3,115 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Blog da F1</title>
+    <title>Blog da F1 — Racing Hub</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-    <header>
-        <button id="themeToggle" class="theme-toggle">
-            <span class="sun">☀️</span>
-            <span class="moon">🌙</span>
-        </button>
-        <h1>Blog de F1 🏎️</h1>
-        <nav>
-            <a href="/">Home</a> |
-            <a href="/nova">Nova Postagem</a> |
-            <a href="/postagens">Postagens</a>
-        </nav>
-    </header>
+    <header class="site-header" role="banner">
+    <!-- BACKDROP STRIPES + LIGHTS -->
+    <div class="header-backdrop">
+        <div class="stripes">
+            <span class="stripe s1"></span>
+            <span class="stripe s2"></span>
+            <span class="stripe s3"></span>
+        </div>
+    </div>
 
-    <main class="main-content">
-        <div class="content">
-            {{{body}}}
+    <div class="header-inner">
+
+        <!-- COLUNA ESQUERDA: LOGO -->
+        <div class="brand">
+            <div class="logo-mark" aria-hidden="true">
+                <svg width="46" height="46" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="48" fill="none" stroke="#ffe100" stroke-width="6"/>
+                    <path d="M18 65 L42 35 L60 50 L82 22"
+                        fill="none" stroke="#0b2b5a" stroke-width="6"
+                        stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="brand-text">
+                <h1>Blog de F1</h1>
+                <p class="tagline">Análises, resultados e telemetria — estilo F1</p>
+            </div>
         </div>
 
-        <aside class="sidebar">
-            <h2>Classificação Atual - 2025:</h2>
-            <p>FONTE: www.espn.com.br/f1</p><br>
+        <!-- COLUNA CENTRAL: NAV -->
+        <nav class="main-nav" role="navigation" aria-label="Principal">
+            <a href="/">Home</a>
+            <a href="/nova">Nova Postagem</a>
+            <a href="/postagens">Postagens</a>
+        </nav>
 
-            <div class="section">
-                <h3>Campeonato de Pilotos:</h3>
-                <ul id="listaPilotos"></ul>
+        <!-- COLUNA DIREITA: AÇÕES -->
+        <div class="header-actions">
+            <button id="themeToggle" class="theme-toggle" aria-label="Alternar tema">
+                <span class="sun">☀️</span>
+                <span class="moon">🌙</span>
+            </button>
+
+            <div class="start-lights" aria-hidden="true">
+                <div class="light red"></div>
+                <div class="light red"></div>
+                <div class="light amber"></div>
+                <div class="light green"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TELEMETRIA -->
+    <div class="telemetry" aria-hidden="true">
+        <div class="telemetry-track">
+            <div class="telemetry-item t1"><strong>Vel:</strong> 318 km/h</div>
+            <div class="telemetry-item t2"><strong>RPM:</strong> 15.2k</div>
+            <div class="telemetry-item t3"><strong>DRS:</strong> ON</div>
+            <div class="telemetry-item t4"><strong>TEMP:</strong> 92°C</div>
+        </div>
+    </div>
+</header>
+
+
+    <main class="main-content" role="main">
+        <div class="content">
+            <div class="page-body">
+                {{{body}}}
+            </div>
+        </div>
+
+        <aside class="sidebar" role="complementary" aria-label="Classificações e updates">
+            <div class="sidebar-top">
+                <h2>Classificação Atual — 2025</h2>
+                <small class="source">Fonte: ESPN F1</small>
             </div>
 
             <div class="section">
-                <h3>Campeonato de Construtores:</h3>
-                <ul id="listaEquipes"></ul>
+                <h3>Campeonato de Pilotos</h3>
+                <ul id="listaPilotos" class="standing-list"></ul>
+            </div>
+
+            <div class="section">
+                <h3>Campeonato de Construtores</h3>
+                <ul id="listaEquipes" class="standing-list"></ul>
+            </div>
+
+            <div class="sidebar-footer">
+                <button id="refreshStand" class="btn-ghost">Atualizar agora</button>
             </div>
         </aside>
 
         <script src="/assets/js/sidebar.js"></script>
-
     </main>
 
-    <footer>
-        <p>&copy; 2025 - Blog de F1</p>
+    <footer role="contentinfo">
+        <div class="footer-inner">
+            <p>&copy; 2025 — Blog de F1 • Visual inspirado no paddock</p>
+            <div class="footer-stripes" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
     </footer>
 
     <script src="/assets/js/main.js"></script>
