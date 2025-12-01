@@ -5,14 +5,11 @@
     --bg: #ffffff;
     --bg-alt: #f3f3f3;
     --text: #1a1a1a;
-    --accent: #d50000;
+    --accent: #d50000;        
     --accent-light: #ff5252;
-    --highlight: #ffea00;
     --card-shadow: rgba(213, 0, 0, 0.15);
     --radius: 14px;
     --transition: 0.3s ease;
-
-    /* Animações F1 */
     --speed-zoom: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -35,7 +32,7 @@
 }
 
 /* ============================================
-   BODY + TRANSIÇÃO ENTRE TEMAS
+   BODY
 ============================================ */
 body {
     background: var(--bg);
@@ -62,10 +59,9 @@ header h1 {
     text-transform: uppercase;
 }
 
-/* Animação de descida */
 @keyframes fadeDown {
     from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 /* ============================================
@@ -101,7 +97,7 @@ nav a:hover {
 
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(15px); }
-    to { opacity: 1; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(0); }
 }
 
 .content {
@@ -122,12 +118,12 @@ nav a:hover {
 }
 
 @keyframes slideRight {
-    from { opacity: 0; transform: translateX(30px);}
-    to { opacity: 1; transform: translateX(0); }
+    from { opacity: 0; transform: translateX(30px); }
+    to   { opacity: 1; transform: translateX(0); }
 }
 
 .sidebar h3 {
-    color: var(--highlight);
+    color: var(--accent);
     margin-bottom: 12px;
 }
 
@@ -163,7 +159,7 @@ nav a:hover {
 }
 
 .card h3 {
-    color: var(--highlight);
+    color: var(--accent);
     margin-bottom: 10px;
 }
 
@@ -195,10 +191,7 @@ nav a:hover {
 }
 
 .card-actions a {
-    color: var(--highlight);
-}
-.card-actions a:hover {
-    color: var(--accent-light);
+    color: var(--accent);
 }
 
 /* ============================================
@@ -221,7 +214,7 @@ nav a:hover {
 
 .form-card label {
     font-weight: bold;
-    color: var(--highlight);
+    color: var(--accent);
     margin: 10px 0 4px;
     display: block;
 }
@@ -315,7 +308,6 @@ footer {
     transform: translateY(35px);
 }
 
-/* Animação F1: vibração leve */
 .theme-toggle:hover {
     animation: f1Shake 0.20s linear infinite alternate;
 }
@@ -324,7 +316,6 @@ footer {
     from { transform: translateX(-1px); }
     to   { transform: translateX(1px); }
 }
-
 
 /* ============================================
    RESPONSIVIDADE
