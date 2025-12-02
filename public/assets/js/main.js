@@ -56,20 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
             card.style.boxShadow = '';
         });
     });
-
-    // "Start lights" blink sequence (visual only)
-    const lights = document.querySelectorAll('.start-lights .light');
-    if (lights.length) {
-        // sequence: red red amber green
-        let seq = [0,1,2,3];
-        let i = 0;
-        const blink = () => {
-            lights.forEach((l, idx) => l.style.opacity = (idx === seq[i]) ? 1 : 0.35);
-            i = (i + 1) % seq.length;
-        };
-        blink();
-        setInterval(blink, 9000); // slow cycle for ambiance
-    }
 });
 
 // ============================================
@@ -137,41 +123,37 @@ function iniciarSemaforoF1() {
     const lights = document.querySelectorAll(".start-lights .light");
     if (!lights.length) return;
 
-    // Reset
+    // Reset: apaga tudo
     lights.forEach(l => {
         l.classList.remove("on-red", "on-green");
     });
 
     let index = 0;
 
-    // Acende vermelhos um por um
-    const redInterval = setInterval(() => {
-        if (index < 4) {
+    // Acende os vermelhos um a um
+    const acenderRedes = setInterval(() => {
+        if (index < lights.length) {
             lights[index].classList.add("on-red");
             index++;
         } else {
-            clearInterval(redInterval);
+            clearInterval(acenderRedes);
 
-            // Espera um pouco com todos vermelhos acesos
+            // Mantém todos vermelhos por 1 segundo
             setTimeout(() => {
-                
-                // Apaga todos
+                // Apaga os vermelhos
                 lights.forEach(l => l.classList.remove("on-red"));
 
-                // Liga verde final!
-                setTimeout(() => {
-                    lights[3].classList.add("on-green"); // último vira verde
-                }, 300);
-
-            }, 600);
+                // Acende todos verdes simultaneamente
+                lights.forEach(l => l.classList.add("on-green"));
+            }, 1000); // tempo maior com todos vermelhos
         }
-    }, 600);
+    }, 600); // intervalo entre acender cada vermelho
 }
 
-// Executa animação ao carregar a página
+// Executa ao carregar
 window.addEventListener("load", () => {
     iniciarSemaforoF1();
 
-    // Repetir a cada 15s (igual largada simulada)
-    setInterval(iniciarSemaforoF1, 15000);
+    // Repetir a cada 15s (simula largada)
+    setInterval(iniciarSemaforoF1, 6000);
 });

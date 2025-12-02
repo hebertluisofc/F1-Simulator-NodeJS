@@ -113,44 +113,39 @@ body {
     opacity: 0.06;
 }
 
-/* START LIGHTS */
+/* ============================
+   SEMÁFORO F1
+============================ */
 .start-lights {
     display: flex;
-    gap: 10px;
-    position: relative;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
 }
 
 .start-lights .light {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
-    background: #320000;
+    background: #320000; /* apagado vermelho */
     border: 2px solid #000;
-    box-shadow: 0 0 6px rgba(0, 0, 0, .6) inset;
-    transition: background .25s, box-shadow .25s;
+    box-shadow: 0 0 6px rgba(0,0,0,.6) inset;
+    transition: background 0.4s, box-shadow 0.4s;
 }
 
-.start-lights .red {
-    background: rgba(255, 59, 59, 0.95);
-}
-
-.start-lights .amber {
-    background: rgba(255, 212, 0, 0.95);
-}
-
-.start-lights .green {
-    background: rgba(0, 230, 130, 0.95);
-}
-
+/* Vermelho aceso */
 .start-lights .light.on-red {
     background: #ff0000;
-    box-shadow: 0 0 12px #ff0000, 0 0 30px #ff0000aa;
+    box-shadow: 0 0 12px #ff0000, 0 0 24px #ff0000aa;
 }
 
+/* Verde aceso */
 .start-lights .light.on-green {
     background: #00ff2a;
-    box-shadow: 0 0 16px #00ff2a, 0 0 36px #00ff2a99;
+    box-shadow: 0 0 14px #00ff2a, 0 0 28px #00ff2aaa;
 }
+
 
 /* HEADER INNER */
 .header-inner {
