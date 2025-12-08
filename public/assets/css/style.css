@@ -356,7 +356,6 @@ body {
     border-radius: 12px;
     border-left: 3px solid var(--accent);
     box-shadow: var(--shadow);
-    position: sticky;
     top: 18px;
     height: fit-content;
 }
