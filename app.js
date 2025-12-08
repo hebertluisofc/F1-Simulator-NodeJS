@@ -23,6 +23,11 @@ app.use(f1api);
 // ==============================
 const staticPosts = [
     {
+        titulo: "Norris é o primeiro britânico campeão da McLaren desde Hamilton, em 2008",
+        autor: "Equipe F1 News",
+        conteudo: "Equipe inglesa não tinha um piloto conquistando o Mundial há 17 anos, quando Lewis superou Felipe Massa. Com o triunfo de domingo, Lando se torna terceiro nome do país a ganhar pela escuderia."
+    },
+    {
         titulo: "Ferrari confirma atualização agressiva para 2025",
         autor: "Equipe F1 News",
         conteudo: "A Ferrari anunciou um novo conceito aerodinâmico para a temporada de 2025, com foco no desempenho em curvas de alta e melhor gestão de pneus."
@@ -42,8 +47,6 @@ const staticPosts = [
         autor: "Equipe F1 News",
         conteudo: "A FIA confirmou realocação de datas e ajustes logísticos no calendário 2025, reduzindo o desgaste operacional entre etapas distantes."
     },
-
-    // +24 novas postagens
     {
         titulo: "Red Bull testa novo conceito de sidepods em Abu Dhabi",
         autor: "Equipe F1 News",
